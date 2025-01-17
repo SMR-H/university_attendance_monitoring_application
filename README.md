@@ -1,6 +1,5 @@
 # University Attendance Monitoring Application
 
-
 This project was developed to modernize the attendance tracking system for university professors, addressing a request from the **Islamic Azad University of Zanjan**. The traditional method of managing attendance and absences was outdated and inefficient, prompting the creation of this system to provide a more streamlined and user-friendly solution.
 
 ## Key Features
@@ -21,8 +20,6 @@ In the next phase of the project, we plan to expand the system's capabilities to
 - **SMS Notifications**: Notify students and professors about attendance status and updates directly through SMS integration.
 
 This system is designed to improve operational efficiency, provide transparency, and reduce the administrative burden of managing attendance in academic institutions.
-
-
 
 ## Technologies and Libraries Used  
 
