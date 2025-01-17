@@ -1,0 +1,211 @@
+# Use the official Python image with Debian Bullseye slim
+# Buster is pretty old at this point, I'd recommend using bullseye, it has more up to date libraries.
+FROM python:3.11-slim-bullseye
+
+# set work directory
+WORKDIR /usr/src/app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y build-essential libpq-dev cron supervisor netcat && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# set timezone
+ENV TZ=Asia/Tehran
+
+# install Python dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+#RUN pip install --no-cache-dir -r requirements.txt
+
+# copy cron job and set permissions
+COPY crontab /etc/cron.d/my-crontab
+RUN chmod 0644 /etc/cron.d/my-crontab && \
+    crontab /etc/cron.d/my-crontab
+
+# copy supervisor configuration and entrypoint script
+#COPY supervisord.conf /etc/supervisord.conf
+COPY config/supervisord.conf /etc/supervisord.conf
+
+COPY entrypoint.dev.sh /usr/src/app/entrypoint.dev.sh
+RUN chmod +x /usr/src/app/entrypoint.dev.sh
+
+# copy application files
+COPY . .
+
+# run entrypoint.prod.sh
+ENTRYPOINT ["/usr/src/app/entrypoint.dev.sh"]
+
+#----------------------
+# # pull official base image
+# FROM python:3.12.2-slim
+
+# # set work directory
+# WORKDIR /usr/src/app
+
+# # set environment variables
+# ENV PYTHONDONTWRITEBYCODE 1
+# ENV PYTHONUNBUFFERED 1
+
+
+
+# RUN apk add --no-cache dcron
+# RUN apk add --no-cache python3 supervisor
+# RUN apk add --no-cache tzdata
+# ENV TZ=Asia/Tehran
+
+
+# #RUN mkdir /app
+# #WORKDIR /app
+
+# # install dependencies
+# COPY ./requirements2.txt .
+# RUN pip install -r requirements2.txt
+
+# COPY crontab /etc/crontabs/root
+# RUN chmod 0644 /etc/crontabs/root
+
+# COPY ./supervisord.conf /etc/supervisord.conf
+
+# COPY entrypoint.prod.sh /
+# COPY . .
+# RUN chmod +x /entrypoint.prod.sh
+# ENTRYPOINT ["/entrypoint.prod.sh"]
+
+#-------------------------------
+# FROM python:alpine
+
+# # Install cron
+
+# # RUN apt-get update
+# RUN apk update
+# # RUN apk update && apk upgrade
+# # RUN apk add crond && \
+# #     rm -rf /etc/periodic
+# # RUN apk add bash
+
+
+# ENV PYTHONDONTWRITEBYCODE 1
+# ENV PYTHONUNBUFFERED 1
+# ENV DJANGO_SUPERUSER_PASSWORD 123456
+
+# RUN mkdir /app
+# WORKDIR /app
+# ADD ./requirements2.txt /app/
+# # RUN pip install --upgrade pip
+# RUN pip install -r requirements2.txt
+
+
+# # Copy the crontab file into the container
+# # COPY crontab /etc/crontabs/root
+# # RUN chmod 0644 /etc/crontabs/root
+
+# # django-crontab logfile
+# # RUN mkdir /cron
+# # RUN touch /cron/django_cron.log
+
+
+# COPY entrypoint.prod.sh /
+# RUN chmod +x /entrypoint.prod.sh
+# ENTRYPOINT ["/entrypoint.prod.sh"]
+
+# CMD ["crond", "-f", "-l", "8"]
+# CMD crond -f -l 2 -L /cron/django_cron.log
+
+
+# CMD python3 manage.py makemigrations --noinput && \
+#     python3 manage.py migrate --noinput && \
+#     python3 manage.py collectstatic --noinput && \
+#     python3 manage.py createsuperuser --user admin --email admin@admin.com --noinput; \
+#     gunicorn -b 0.0.0.0:8000 core.wsgi && \
+#     crond -f -L
+
+# CMD ["crond", "-f", "-L", "/dev/stdout"]
+#--------------------
+# To run a Django cron job in Docker, you can follow these steps:
+
+# 1. Create a Dockerfile with the required dependencies and configurations to run your Django project.
+
+# 2. Add a cron job script in the Dockerfile that will run the Django management command for your scheduled task. For example, if you are using django-crontab, you can add the following line to your Dockerfile:
+
+# RUN echo "*/5 * * * * /usr/local/bin/python /code/manage.py crontab run >> /var/log/cron.log 2>&1" >> /etc/crontab
+
+# This runs the crontab run management command every 5 minutes and logs the output to /var/log/cron.log.
+
+# 3. Add a CMD or ENTRYPOINT instruction to the Dockerfile that will start the cron service when the container starts. For example:
+
+# CMD /usr/sbin/cron -f
+
+# This will start the cron service and keep it running in the foreground.
+
+# 4. Build the Docker image and run the container using the docker build and docker run commands respectively.
+
+# docker build -t mydjangoapp .
+# docker run -d mydjangoapp
+
+# This will start the container and run the cron job according to the schedule defined in the cron script.
+# #--------------------
+# To modify a Dockerfile to run a cronjob for a Django application, you can follow these steps:
+
+# 1. Create a new file in the root directory of your project named `cron`. This file should contain the command(s) you wish to run on a schedule.
+
+# 2. In your Dockerfile, install the cron package by adding the following line:
+
+#    `RUN apt-get update && apt-get -y install cron`
+# 3. Copy the `cron` file you created in step 1 to the Docker image by adding this line:
+
+#    `COPY cron /etc/cron.d/cron`
+# 4. Give the `cron` file executable permission by adding this line:
+
+#    `RUN chmod 0644 /etc/cron.d/cron`
+# 5. Copy your Django application code to the Docker image as you normally would.
+
+# 6. In the CMD or ENTRYPOINT instruction of your Dockerfile, add the following line to start the cron service:
+
+#    `CMD ["cron", "-f"]`
+# This will execute the cronjob according to the schedule you set in the `cron` file. Note that the time zone of the Docker image may differ from your local machine, so be sure to double-check the schedule.
+
+#-------------------------
+
+
+
+# It seems like you are trying to set up a cron job inside a Docker container with the python:alpine base image, but you're facing an error because crontab is not available.
+# To fix this issue, you can follow these steps:
+# 1.
+# Install cron and any other necessary packages in your Dockerfile:
+# FROM python:alpine
+# # Install cron and other dependencies
+# RUN apk update && apk add --no-cache \
+#     build-base \
+#     postgresql-dev \
+#     musl-dev \
+#     libffi-dev \
+#     cron \
+#     && rm -rf /var/cache/apk/*
+# 2.
+# Create a script that runs your Django management command, for example, django_task.sh:
+# #!/bin/sh
+# python manage.py your_custom_management_command
+# 3.
+# Make the script executable:
+# chmod +x django_task.sh
+# 4.
+# Add a line to the crontab file with the desired schedule for your task (e.g., every minute):
+# * * * * * /path/to/your/django_task.sh
+# 5.
+# Update your Dockerfile to copy the django_task.sh and crontab files to your container:
+# # Copy your Django project
+# COPY . /app
+# WORKDIR /app
+# # Copy the Django management command script
+# COPY django_task.sh /app/
+# # Copy the crontab file
+# COPY crontab /etc/crontabs/root
+# 6.
+# In your Dockerfile, add a CMD or ENTRYPOINT to start the cron service along with your application:
+# CMD ["sh", "-c", "crond && python manage.py runserver 0.0.0.0:8000"]
+# Now, your Docker container should have cron installed, and your Django task should run according to the schedule you defined in the crontab file.

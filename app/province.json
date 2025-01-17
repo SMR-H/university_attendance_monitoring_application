@@ -1,0 +1,310 @@
+[    
+{
+    "model": "location.province",
+    "pk": 1,
+    "fields": {
+        "name": "آذربایجان شرقی",
+        "province_code": 1
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 2,
+    "fields": {
+        "name": "آذربایجان غربی",
+        "province_code": 2
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 3,
+    "fields": {
+        "name": "اردبیل",
+        "province_code": 3
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 4,
+    "fields": {
+        "name": "اصفهان",
+        "province_code": 4
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 5,
+    "fields": {
+        "name": "البرز",
+        "province_code": 5
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 6,
+    "fields": {
+        "name": "ایلام",
+        "province_code": 6
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 7,
+    "fields": {
+        "name": "بوشهر",
+        "province_code": 7
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 8,
+    "fields": {
+        "name": "تهران",
+        "province_code": 8
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 9,
+    "fields": {
+        "name": "چهارمحال و بختیاری",
+        "province_code": 9
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 10,
+    "fields": {
+        "name": "خراسان جنوبی",
+        "province_code": 10
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 11,
+    "fields": {
+        "name": "خراسان رضوی",
+        "province_code": 11
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 12,
+    "fields": {
+        "name": "خراسان شمالی",
+        "province_code": 12
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 13,
+    "fields": {
+        "name": "خوزستان",
+        "province_code": 13
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 14,
+    "fields": {
+        "name": "زنجان",
+        "province_code": 14
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 15,
+    "fields": {
+        "name": "سمنان",
+        "province_code": 15
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 16,
+    "fields": {
+        "name": "سیستان و بلوچستان",
+        "province_code": 16
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 17,
+    "fields": {
+        "name": "فارس",
+        "province_code": 17
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 18,
+    "fields": {
+        "name": "قزوین",
+        "province_code": 18
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 19,
+    "fields": {
+        "name": "قم",
+        "province_code": 19
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 20,
+    "fields": {
+        "name": "کردستان",
+        "province_code": 20
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 21,
+    "fields": {
+        "name": "کرمان",
+        "province_code": 21
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 22,
+    "fields": {
+        "name": "کرمانشاه",
+        "province_code": 22
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 23,
+    "fields": {
+        "name": "کهگیلویه و بویراحمد",
+        "province_code": 23
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 24,
+    "fields": {
+        "name": "گلستان",
+        "province_code": 24
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 25,
+    "fields": {
+        "name": "لرستان",
+        "province_code": 25
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 26,
+    "fields": {
+        "name": "گیلان",
+        "province_code": 26
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 27,
+    "fields": {
+        "name": "مازندران",
+        "province_code": 27
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 28,
+    "fields": {
+        "name": "مرکزی",
+        "province_code": 28
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 29,
+    "fields": {
+        "name": "هرمزگان",
+        "province_code": 29
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 30,
+    "fields": {
+        "name": "همدان",
+        "province_code": 30
+    }
+},
+
+
+{
+    "model": "location.province",
+    "pk": 31,
+    "fields": {
+        "name": "یزد",
+        "province_code": 31
+    }
+}
+    ]

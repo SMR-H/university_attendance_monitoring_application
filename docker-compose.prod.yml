@@ -1,0 +1,140 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
+    container_name: uama
+    expose:
+      - 8000
+    volumes:
+      - static_files:/usr/src/app/staticfiles
+    env_file:
+      - .env.prod
+    environment:
+      - ENV_FILE=.env.prod
+    depends_on:
+      - db
+      
+  db:
+    image: postgres:16
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env.prod.db
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: 'always'
+    ports:
+      - '80:80'
+    volumes:
+      - static_files:/home/app/staticfiles
+      - ./volumes/media:/usr/src/app/media
+    depends_on:
+      - app
+
+volumes:
+  postgres_data:
+    driver: local
+  static_files:
+#-------------------------------------------
+# version: '3.7'
+
+# services:
+#   app:
+#     build:
+#       context: ./app
+#       dockerfile: Dockerfile.prod
+#     container_name: uama
+#     expose:
+#       - '8000'
+#     volumes:
+#       - './volumes/static:/usr/src/app/staticfiles'
+#     env_file:
+#       - .env.prod
+#     environment:
+#       - ENV_FILE=.env.prod
+#     depends_on:
+#       - db
+#   db:
+#     image: postgres:16
+#     container_name: db
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data/
+#     env_file:
+#       - .env.prod.db
+#   nginx:
+#     build: ./nginx
+#     container_name: nginx
+#     restart: 'always'
+#     ports:
+#       - '80:80'
+#     volumes:
+#       - ./volumes/static:/usr/src/app/staticfiles
+#       - ./volumes/media:/usr/src/app/media
+#     depends_on:
+#       - app
+
+# volumes:
+#   postgres_data:
+
+#-------------------------------
+# version: '3.7'
+
+# services:
+#   app:
+#     build:
+#       context: ./app
+#       dockerfile: Dockerfile.prod
+#     container_name: uama
+#     expose:
+#       - '8000'
+#     volumes:
+#       - './volumes/static/:/home/app/web/staticfiles/'
+# #    volumes:
+# #      - './app/:/usr/src/app/'
+# #      # - './volumes/static/:/app/static'
+# #      # - './volumes/media:/app/media'
+
+#     env_file:
+#       - .env.prod
+#     environment:
+#       - ENV_FILE=.env.prod
+#     depends_on:
+#       - db
+#   db:
+#     image: postgres:16
+#     container_name: db
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data/
+
+#     env_file:
+#       - .env.prod.db
+
+
+#   nginx:
+#     build: ./nginx
+#     container_name: nginx
+#     restart: 'always'
+#     ports:
+#       - '80:80'
+#     volumes:
+#       - ./volumes/static:/home/app/web/staticfiles
+#       - './volumes/media:/app/media'
+#     depends_on:
+#       - app
+# volumes:
+#   postgres_data:
+#   ./volumes/static:
+
+  # cron:
+  #   build: ./cron
+  #   container_name: cron
+  #   volumes:
+  #     - './volumes/backend:/app'
+  #   depends_on:
+  #     - app

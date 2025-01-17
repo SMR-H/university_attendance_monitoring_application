@@ -1,0 +1,1 @@
+[{"model": "blog.courseoffering", "pk": 1, "fields": {"course_id": 1, "semester_id": 1, "class_id": 2, "day": "SATURDAY", "start_time": "16:37:11", "end_time": "18:00:00", "offering_course_code": "145789644521", "major_id": 1, "aggregate": false, "course_gender": "BOTH", "professor_id": [1]}}]

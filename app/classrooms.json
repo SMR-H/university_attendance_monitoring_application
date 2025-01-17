@@ -1,0 +1,65 @@
+[
+    {
+        "model": "classroom.classroom",
+        "pk": 1,
+        "fields": {
+            "class_number": 2203,
+            "floor": 0,
+            "faculty_id": 2
+        }
+    },
+    {
+        "model": "classroom.classroom",
+        "pk": 2,
+        "fields": {
+            "class_number": 2101,
+            "floor": 1,
+            "faculty_id": 2
+        }
+    },
+    {
+        "model": "classroom.classroom",
+        "pk": 3,
+        "fields": {
+            "class_number": 2102,
+            "floor": 1,
+            "faculty_id": 2
+        }
+    },
+    {
+        "model": "classroom.classroom",
+        "pk": 4,
+        "fields": {
+            "class_number": 2103,
+            "floor": 1,
+            "faculty_id": 2
+        }
+    },
+    {
+        "model": "classroom.classroom",
+        "pk": 5,
+        "fields": {
+            "class_number": 2104,
+            "floor": 1,
+            "faculty_id": 2
+        }
+    },
+    {
+        "model": "classroom.classroom",
+        "pk": 8,
+        "fields": {
+            "class_number": 2201,
+            "floor": 2,
+            "faculty_id": 2
+        }
+    },
+    {
+        "model": "classroom.classroom",
+        "pk": 9,
+        "fields": {
+            "class_number": 2202,
+            "floor": 2,
+            "faculty_id": 2
+        }
+    }
+    ]

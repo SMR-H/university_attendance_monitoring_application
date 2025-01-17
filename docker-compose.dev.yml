@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    container_name: uama
+    ports:
+      - '8000:8000'
+    # expose:
+      # - '8000'
+    volumes:
+      - './app/:/usr/src/app/'
+      - './volumes/static/:/usr/src/app/staticfiles'
+      - './volumes/media:/usr/src/app/media' 
+    env_file:
+      - .env.dev
+    environment:
+      - ENV_FILE=.env.dev
+    depends_on:
+      - db
+  db:
+    image: postgres:16
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+    environment:
+    - POSTGRES_USER=uama_django
+    - POSTGRES_PASSWORD=uama_django
+    - POSTGRES_DB=uama_django_prod
+
+volumes:
+  postgres_data:
+
+#  nginx:
+#    build: ./nginx
+#    container_name: nginx
+#    restart: 'always'
+#    ports:
+#      - '80:80'
+#    volumes:
+#      - './volumes/static:/app/static'
+#      - './volumes/media:/app/media'
+#volumes:
+#  postgres_data:
+
+  # cron:
+  #   build: ./cron
+  #   container_name: cron
+  #   volumes:
+  #     - './volumes/backend:/app'
+  #   depends_on:
+  #     - app
