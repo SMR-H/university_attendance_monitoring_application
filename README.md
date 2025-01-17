@@ -1,6 +1,5 @@
 # University Attendance Monitoring Application
 
----
 
 This project was developed to modernize the attendance tracking system for university professors, addressing a request from the **Islamic Azad University of Zanjan**. The traditional method of managing attendance and absences was outdated and inefficient, prompting the creation of this system to provide a more streamlined and user-friendly solution.
 
@@ -23,7 +22,7 @@ In the next phase of the project, we plan to expand the system's capabilities to
 
 This system is designed to improve operational efficiency, provide transparency, and reduce the administrative burden of managing attendance in academic institutions.
 
----
+
 
 ## Technologies and Libraries Used  
 
@@ -41,7 +40,7 @@ The project maintains separate environments for development and production:
 - **SQLite** is used during development for ease of setup.  
 - **PostgreSQL** powers the production environment for reliability and scalability.  
 
----
+
 ## How to run
 
 ```bash
@@ -70,9 +69,9 @@ Default superuser credentials are as follows:
 
 You can use these credentials for initial access. To enhance security, it is highly recommended to update the superuser username and password in the `# Superuser settings` section of the `.env.prod` file.  
 
----  
+
 
 ## License
 The MIT License (MIT)
 
----
+
